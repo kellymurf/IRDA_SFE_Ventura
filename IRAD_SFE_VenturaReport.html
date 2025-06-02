@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoAI Assisted Assessment of Wildfire Structure Loss</title>
+    <style>
+        body {
+            font-family: sans-serif;	
+            margin: 0px;
+            background-color: #e7e6e6		
+        }
+	   .report-header {
+            background-color: #616161;
+            color: white;
+            height: 75px;
+            width: 100%;
+            display: flex;
+            align-items: left;
+            justify-content: left;
+            position: sticky; /* Optional: Makes the header stick to the top on scroll */
+            top: 0; /* Required for sticky positioning */
+            z-index: 100; /* Ensures it stays on top of other content */
+        }
+        .report-header-text {
+            font-family: Roboto, sans-serif;
+            font-size: 30px;
+            font-weight: bold;
+            margin: 15px; /* Remove default paragraph margins */
+        }
+        .report-section {
+            max-width: 1000px;
+            margin: 0 auto 40px auto; /* centers the content and adds spacing */
+            padding: 0 25px;          /* uniform horizontal padding */
+        }
+        .report-section h2 {
+            color: #d04e04;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+        .report-image {
+            max-width: 100%;
+            height: auto;
+            display: inline;
+            margin: 10px auto;
+            justify-content: left;
+        }
+        .report-map {
+            width: 75%;
+            height: 700px; /* Adjust as needed */
+            justify-content: center;
+            border: 1px solid #ccc;
+        }
+        .image-text-container {
+            display: block; /* Stack elements vertically */
+            align-items: top; /* Vertically center the image and text */
+            margin-bottom: 40px;
+            margin-left: 35px;
+            margin-right: 200px;
+        }
+        .image-text-container .text-wrapper {
+            margin-right: 40px; /* Space between text and image */
+        }
+        .image-text-container img {
+            max-width: 900px; /* Maximum width of the image */
+            height: auto;    /* Maintain aspect ratio */
+        }
+        .gif-header img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover; /* Crop to fit container without distortion */
+            display: block;
+        }
+        .report-header-text {
+            font-family: Roboto, sans-serif;
+            font-size: 30px;
+            font-weight: bold;
+            color: #333;
+            background-color: #f5f5f5;
+            text-align: center;
+            padding: 20px 0;
+            margin: 0;
+        }
+        .report-subtitle-text {
+            font-family: Roboto, sans-serif;
+            font-size: 18px;
+            color: #555;
+            text-align: center;
+            margin-top: -10px;  /* Pull it a bit closer to the title */
+            margin-bottom: 20px;
+        }
+        .report-header-subtext {
+            font-family: Roboto, sans-serif;
+            font-size: 16px;
+            font-style: italic;
+            color: #666;
+            text-align: left;
+            margin-top: -10px;  /* Slight upward shift if needed */
+            margin-bottom: 20px;
+        }
+        .report-subtitle-text-alt {
+            font-family: Roboto, serif; /* Use a different font here */
+            font-size: 25px;
+            font-weight: bold;
+            color: #75310d;
+            text-align: left;
+            padding-left: 0px;
+            margin-bottom: 20px;
+        }
+        .hero-header {
+            text-align: center;
+            background-color: #f5f5f5;
+            padding: 0;
+            margin-bottom: 30px;
+        }   
+        .hero-header img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+        .hero-title {
+            font-family: Roboto, sans-serif;
+            font-size: 35px;
+            font-weight: bold;
+            color: #333;
+            padding: 20px 25px 0 25px;
+            margin: 0;
+        }
+        .hero-subtitle {
+            font-family: Roboto, sans-serif;
+            font-size: 18px;
+            color: #555;
+            padding: 10px 25px 20px 25px;
+            margin-bottom: 0;
+        }
+        .report-list, .list {
+            list-style-type: disc; /* shows solid bullet points */
+            padding-left: 40px;    /* ensures bullets aren't cut off */
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #333;
+            line-height: 1.6;
+            margin-top: 10px;
+        }
+        .report-list li, .list li {
+            margin-bottom: 12px;
+        }
+
+        .media-align {
+            max-width: 900px;
+            margin: 0 auto;
+            display: block;
+            width: 100%;
+        }
+
+        .media-align img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero-header">
+    <img src="https://github.com/kellymurf/IRDA_SFE_Ventura/raw/main/TextSAM_swipe.gif" alt="Header GIF">
+    <div class="hero-title">Beyond Manual: How GeoAI Transforms Wildfire Structure Loss</div>
+    <div class="hero-subtitle">From hours of digitizing to real-time intelligence—discover how AI is redefining geospatial analysis</div>
+    <div class="hero-subtitle"><strong>Xentity Corporation</strong></div>
+</div>
+
+    <div class="report-section">
+        <h2>GeoAI in Action: Powerful Automation with Text SAM and LiDAR Models</h2>
+        <p> Traditional geospatial workflows rely on skilled analysts spending hours tracing imagery by hand, classifying point clouds, or writing rule-based logic to interpret terrain. GeoAI breaks that mold. By integrating AI models directly into ArcGIS Pro, we're moving from manual to machine learning-driven mapping—giving analysts tools that learn, adapt, and scale. Instead of drawing buildings one by one, you simply prompt a model. Instead of cleaning noisy LiDAR manually, pretrained models classify it for you.</p>
+        <p>We use pretrained ESRI deep learning models, including Building Point Classification and Text SAM (Segment Anything Model), to automate traditionally labor-intensive geospatial workflows. These models rapidly extract building footprints, vegetation, power infrastructure, and terrain features—replacing days of manual digitizing with fast, reliable outputs you can scale across entire counties.</p>
+        <p>The Building Point Classification model identifies buildings, high vegetation, powerlines and transmission towers, and bare earth surfaces from LiDAR. Text SAM enables natural language–guided object extraction from imagery (e.g., “buildings” or “roofs”), making 2D feature extraction intuitive and accurate, even in complex environments. These workflows are automated, scalable, and insight-driven for agencies, planners, and insurers in a variety of disciplines.</p>
+        <p>Key Benefits Highlights:</p>
+        <ul class="list">
+            <li>⚡ <strong>Speed</strong>: Drastically reduce turnaround time</li>
+            <li>🧠 <strong>Intelligence</strong>: Models trained to recognize structures in diverse environments</li>
+            <li>🌍 <strong>Scalability</strong>: Works at parcel, neighborhood, or county scale</li>
+        </ul>
+
+    <div class="image-text-container">
+        <img src="https://github.com/kellymurf/IRDA_SFE_Ventura/raw/main/LidarScreenshot.png" alt="LiDAR example">
+        <p style="font-size: 14px; color: #555; margin-top: 5px;">
+            Deep Learning Model used to effortlessly classify LiDAR point clouds for Buildings, high vegetation, powerlines and transmission towers.
+        </p>
+    </div>
+
+    <div class="report-section">
+        <h2>Out of the Ashes: A Smarter Way to Map and Respond</h2>
+        <div class="report-header-subtext">
+            Real-World Use Case: Structure-Level Wildfire Damage Assessment Ventura County, CA | Thomas Fire
+    </div>
+    <p>The Thomas Fire, ignited on December 4, 2017, in Ventura County, California, devastated over 280,000 acres. The blaze destroyed 1,063 structures, including homes, agricultural buildings, and critical facilities such as the Vista del Mar hospital and the Ojai Valley School. The Thomas Fire's widespread destruction underscored the vulnerabilities of both urban and rural communities to large-scale wildfires.</p>
+    <p>Wildfires like the Thomas Fire leave more than destruction—they leave urgent questions. What structures remain? What was lost? How can we respond better next time?</p>
+    <p>This use case explores how ESRI’s GeoAI tools automate pre- and post-disaster structure mapping—speeding up analysis, reducing manual labor, and delivering accurate, scalable results. Using pre- and post-fire geospatial data, this workflow delivered an actionable structure analysis in days—not weeks. In response to the 2017 Thomas Fire, we built a flexible, multi-source workflow that integrates:</p>
+    <ul class="report-list">
+        <li>
+            <strong>Pre-Fire NAIP Imagery + ESRI’s Text SAM:</strong><br>
+            Extracted building footprints using a simple text prompt ("buildings") to segment structures from 2016 aerial imagery and establish a baseline.
+        </li>
+        <li>
+            <strong>Post-Fire LiDAR + Building Point Classification:</strong><br>
+            Classified 3D point clouds to isolate surviving buildings and foundations, capturing a highly accurate post-event footprint to assess damage and prioritize mitigation.
+        </li>
+    </ul>
+    <p>This dual-model approach provides a more complete picture of structural damage, critical for FEMA reporting, rebuilding strategies, or hazard mitigation. Our structure-level outputs can help agencies assess damage with spatial accuracy, validate claims, and model risk exposure across large portfolios—all with AI-driven speed and transparency.</p>
+    <p>Within the area of interest, the analysis identified 438 of the 1,368 buildings were completely destroyed. The assessed improved value of the destroyed parcels was approximately 106 million dollars.</p>
+
+    <div style="text-align: center; margin-top: 20px;">
+    <iframe 
+        width="100%" 
+        height="600" 
+        frameborder="0" 
+        scrolling="no" 
+        allowfullscreen 
+        src="https://www.arcgis.com/apps/Embed/index.html?webmap=044dec8ff72446bf9ec3b995a9bb71a6&zoom=true&scale=true&legend=true&theme=light">
+    </iframe>
+    <p style="font-size: 14px; color: #555; margin-top: 8px;">
+        Dual source approach using Text SAM and LiDAR for pre and post fire damage assessments. Destroyed structure footprints in red; standing structure footprints in black.
+    </p>
+</div>
+<br>
+<br>
+    <div class="report-section">
+        <div class="report-subtitle-text-alt">
+            Deeper Analysis: Post-Fire Landslide Risk
+    </div>
+    <p>Wildfires increase landslide risk by stripping vegetation and destabilizing slopes. Our workflows combine GeoAI and multi-layer spatial analysis to identify high-risk zones for post-fire debris flows and slope failure. We integrated two data sources from California Geological Survey (CGS):</p>
+        <ul class="report-list">
+            <li>Landslide risk analysis based on slope and rock strength</li>
+            <li>Historical landslide locations</li>
+        </ul>
+    <p>This layered analysis could help emergency managers, infrastructure planners, and insurers proactively address secondary hazards after a wildfire.</p>
+
+
+<div class="report-section">
+    <video autoplay loop muted playsinline class="media-align">
+        <source src="https://github.com/kellymurf/IRDA_SFE_Ventura/raw/main/3D_SFE-optimize-mp4.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+        <p style="font-size: 14px; color: #555; margin-top: 5px;">
+            Standing structures with the highest landslide risk in Red are those within CGS's 10/10 landslide risk zones & 15 meters from a burnt down structure. Orange structures are within the 10/10 landslide zones but are not near burnt structures. White structures should be analyzed further for vegetation loss since areas where historical landslides occur have a higher chance of reoccurring. Green structures are in relatively safe zones outside all of these factors.
+        </p>
+</div>
+
+<div class="report-section">
+    <div class="media-align">
+        <img src="https://github.com/kellymurf/IRDA_SFE_Ventura/raw/main/Landslide_lidar_stats.png" alt="Landslide LiDAR statistics">
+        <p style="font-size: 14px; color: #555; margin-top: 5px;">
+            Analysis results of landslide risks for structures left standing vs. structures burnt.
+        </p>
+    </div>
+</div>
+
+      <div class="report-section">
+        <h2>Beyond Buildings: Extend, Train, and Customize Your GeoAI</h2>
+            <p> While pretrained models like ESRI’s Text SAM deliver strong out-of-the-box results, we can take them further. We can customize and fine-tune the pretrained models for even higher accuracy and broader use.</p>
+            <p> Multispectral imagery, like near-infrared (NIR), can be integrated to improve feature segmentation accuracy in complex scenes—dense vegetation, shadows, or mixed-use areas. Additionally, transfer learning techniques could be employed to adapt the pretrained models to your geography, infrastructure, and project goals.</p>
+            <p> The result? Smarter, more context-aware models that outperform generic solutions—and deliver insights you can trust.</p>
+    </div>
+
+      <div class="report-section">
+        <h2>Bring AI Into Your Geospatial Workflows</h2>
+        <p>Combining AI-powered tools with expert validation delivers a game-changing workflow for any analysis. From local government planning to insurance modeling and emergency response, this solution brings speed, accuracy, and insight when it matters most. Traditional tools interpret what they’re told, AI tools interpret what they’ve learned—reducing human bias and speeding up results. Whether you're responding to wildfires, modeling landslide risk, or assessing infrastructure vulnerability, we can help you turn raw spatial data into actionable intelligence—fast.</p>
+        <div class="report-subtitle-text-alt">
+            Why You Should Choose Our Workflow
+        <ul class="report-list">
+            <li>✅ <strong>Rapid Automation</strong>: Extract features from imagery or LiDAR in hours</li>
+            <li>✅ <strong>Multimodal Flexibility</strong>: Works with whatever data you have—2D or 3D</li>
+            <li>✅ <strong>Comprehensive Insight</strong>: From building-level damage to landscape-scale hazards</li>
+            <li>✅ <strong>Insurance-Grade Accuracy</strong>: Aligns with ground-truth data for defensible outputs</li>
+            <li>✅ <strong>Plug-and-Play</strong>: Built in ArcGIS Pro for seamless integration</li>
+        </ul>
+      </div>
+    <br>
+
+</body>
+</html>
